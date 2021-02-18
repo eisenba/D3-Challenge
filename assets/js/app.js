@@ -73,6 +73,7 @@ d3.csv("/assets/data/data.csv").then(function(censusData){
   .attr("fill", "#5cb2b5")
   .attr("opacity", ".65");
 
+
   //Initialize tool tip
   var toolTip = d3.tip()
   .attr("class", "d3-tip")
