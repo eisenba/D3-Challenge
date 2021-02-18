@@ -29,6 +29,8 @@ d3.csv("../data/data.csv").then(function(censusdata){
         data.smokes = +data.smokes;
     });
 
+    // Create scale functions
+
 
 
 })
