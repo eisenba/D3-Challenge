@@ -22,7 +22,7 @@ var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 // Import data
-d3.csv("../data/data.csv").then(function(censusdata){
+d3.csv("/assets/data/data.csv").then(function(censusdata){
     // Parse data
     censusdata.forEach(function(data){
         data.income = +data.income;
