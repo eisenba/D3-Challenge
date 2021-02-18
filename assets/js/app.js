@@ -58,7 +58,7 @@ d3.csv("/assets/data/data.csv").then(function(censusData){
     chartGroup.append("g")
     .call(leftAxis);
  
-  // Step 5: Create Circles
+  //Create Circles
   var circlesGroup = chartGroup.selectAll("circle")
   .data(censusData)
   .enter()
@@ -69,9 +69,9 @@ d3.csv("/assets/data/data.csv").then(function(censusData){
   .attr("cy", function(d) {
   return yLinearScale(d.smokes);
   })
-  .attr("r", "15")
-  .attr("fill", "blue")
-  .attr("opacity", ".5");
+  .attr("r", "12")
+  .attr("fill", "#5cb2b5")
+  .attr("opacity", ".65");
 
 
 
