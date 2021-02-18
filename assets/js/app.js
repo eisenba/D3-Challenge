@@ -30,7 +30,7 @@ d3.csv("/assets/data/data.csv").then(function(censusData){
   });
    // Create scale functions
    var xLinearScale = d3.scaleLinear()
-   .domain([30000, d3.max(censusData.map(function (d) { 
+   .domain([35000, d3.max(censusData.map(function (d) { 
        return d.income;
      })
    )]
@@ -38,7 +38,7 @@ d3.csv("/assets/data/data.csv").then(function(censusData){
    .range([0, width]);
 
  var yLinearScale = d3.scaleLinear()
-   .domain([10, d3.max(censusData.map( 
+   .domain([5, d3.max(censusData.map( 
      function (d) {
        return d.smokes;
      }
@@ -58,6 +58,20 @@ d3.csv("/assets/data/data.csv").then(function(censusData){
     chartGroup.append("g")
     .call(leftAxis);
  
+  // Step 5: Create Circles
+  var circlesGroup = chartGroup.selectAll("circle")
+  .data(censusData)
+  .enter()
+  .append("circle")
+  .attr("cx", function(d) { 
+  return xLinearScale(d.income);
+  })
+  .attr("cy", function(d) {
+  return yLinearScale(d.smokes);
+  })
+  .attr("r", "15")
+  .attr("fill", "blue")
+  .attr("opacity", ".5");
 
 
 
