@@ -94,6 +94,20 @@ d3.csv("/assets/data/data.csv").then(function(censusData){
     toolTip.hide(data);
     });
 
+  // Create axes labels
+  chartGroup.append("text")
+  .attr("transform", "rotate(-90)")
+  .attr("y", 0 - margin.left + 50)
+  .attr("x", 0 - (height / 2) - 30)
+  .attr("dy", "1em")
+  .attr("class", "axisText")
+  .text("Smokes (%)");
 
+  chartGroup.append("text")
+  .attr("transform", `translate(${width / 2 - 50}, ${height + margin.top + 20})`)
+  .attr("class", "axisText")
+  .text("Average Income ($)");
+  }).catch(function (error) {
+  console.log(error);
 
 });
