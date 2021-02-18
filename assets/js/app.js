@@ -28,6 +28,22 @@ d3.csv("/assets/data/data.csv").then(function(censusData){
       data.income = +data.income;
       data.smokes = +data.smokes;
   });
+   // Create scale functions
+   var xLinearScale = d3.scaleLinear()
+   .domain([20, d3.max(censusData.map(function (d) { 
+       return d.income;
+     })
+   )]
+   )
+   .range([0, width]);
 
+ var yLinearScale = d3.scaleLinear()
+   .domain([0, d3.max(censusData.map( 
+     function (d) {
+       return d.smokes;
+     }
+   ))]
+   )
+   .range([height, 0]);
 
 });
