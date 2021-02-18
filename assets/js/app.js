@@ -73,6 +73,12 @@ d3.csv("/assets/data/data.csv").then(function(censusData){
   .attr("fill", "#5cb2b5")
   .attr("opacity", ".65");
 
+  // Add Circle labels
+  circlesGroup.append("text")
+  .attr("x", function(d) { return xLinearScale(d.income); })
+  .attr("y", function(d) { return yLinearScale(d.smokes);})
+  .text(function(d) { return d.abbr; });
+
 
   //Initialize tool tip
   var toolTip = d3.tip()
