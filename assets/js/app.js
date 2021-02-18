@@ -30,7 +30,7 @@ d3.csv("/assets/data/data.csv").then(function(censusData){
   });
    // Create scale functions
    var xLinearScale = d3.scaleLinear()
-   .domain([20, d3.max(censusData.map(function (d) { 
+   .domain([30000, d3.max(censusData.map(function (d) { 
        return d.income;
      })
    )]
@@ -38,12 +38,28 @@ d3.csv("/assets/data/data.csv").then(function(censusData){
    .range([0, width]);
 
  var yLinearScale = d3.scaleLinear()
-   .domain([0, d3.max(censusData.map( 
+   .domain([10, d3.max(censusData.map( 
      function (d) {
        return d.smokes;
      }
    ))]
    )
    .range([height, 0]);
+
+    // Create axis functions
+    var bottomAxis = d3.axisBottom(xLinearScale);
+    var leftAxis = d3.axisLeft(yLinearScale);
+ 
+    // Append Axes 
+    chartGroup.append("g")
+    .attr("transform", `translate(0, ${height})`)
+    .call(bottomAxis);
+ 
+    chartGroup.append("g")
+    .call(leftAxis);
+ 
+
+
+
 
 });
