@@ -73,6 +73,26 @@ d3.csv("/assets/data/data.csv").then(function(censusData){
   .attr("fill", "#5cb2b5")
   .attr("opacity", ".65");
 
+  //Initialize tool tip
+  var toolTip = d3.tip()
+  .attr("class", "d3-tip")
+  .offset([80, -60])
+  .style("opacity",0)
+  .html(function (d) {
+  return (`${d.state}<br>Avg Income: ${d.income}<br>Smoker %: ${d.smokes}`);
+  });
+  
+  //Create tooltip in the chart
+  chartGroup.call(toolTip);
+
+  //Create event listeners to display and hide the tooltip
+  circlesGroup.on("mouseenter", function (data) {
+    toolTip.show(data, this);
+    })
+    // onmouseout event
+    .on("mouseout", function (data, index) {
+    toolTip.hide(data);
+    });
 
 
 
