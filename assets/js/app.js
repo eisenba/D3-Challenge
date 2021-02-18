@@ -21,3 +21,10 @@ var svg = d3.select("#chart")
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
+// Import data
+d3.csv("/assets/data/data.csv").then(function(censusData){
+  // Parse data
+  censusData.forEach(function(data){
+      data.income = +data.income;
+      data.smokes = +data.smokes;
+  });
